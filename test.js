@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('./server.js');
-const should = chai.should();
+const expect = chai.expect;
 
 chai.use(chaiHttp);
 
@@ -12,8 +12,8 @@ describe('Hello World', () => {
       .get('/')
       .end((err, res) => {
         console.log(res);
-        res.should.have.status(200);
-        res.text.should.equal('Hello World')
+        expect(res.status).to.equal(200);
+        expect(res.text).to.equal('Hello World');
         done();
       })
   })
