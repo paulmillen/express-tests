@@ -11,7 +11,9 @@ describe('Hello World', () => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
+        console.log(res);
         res.should.have.status(200);
+        res.text.should.equal('Hello World')
         done();
       })
   })
